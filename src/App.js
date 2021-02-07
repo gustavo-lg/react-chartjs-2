@@ -1,22 +1,27 @@
 import React, { Component } from "react";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
-import ListSubheader from "@material-ui/core/ListSubheader";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import { Bar, Line, Pie, HorizontalBar, Polar } from "react-chartjs-2";
-import { Navbar } from "reactstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       csat: {
-        labels: ["Dúvidas - 95%", "N2 - 100%", "N3 - 100%", "Trial - 75%", "Freemium - NULL"],
+        labels: [
+          "Dúvidas - 93%",
+          "N2 - 100%",
+          "N3 - 100%",
+          "Trial - 100%",
+          "Freemium - 100%",
+        ],
         datasets: [
           {
             label: "%",
-            data: [95, 100, 100, 75, 0, ],
+            data: [93, 100, 100, 100, 100, 0],
             backgroundColor: [
               "#99ccff",
               "#9966ff",
@@ -30,16 +35,16 @@ class App extends Component {
 
       ticketsAbertos: {
         labels: [
-          "Dúvidas: 10",
-          "N2: 2",
-          "N3: 2",
-          "Trial: 0",
+          "Dúvidas: 28",
+          "N2:  8",
+          "N3: 6",
+          "Trial: 3",
           "Freemium: 0",
         ],
         datasets: [
           {
             label: "Abertos",
-            data: [10, 2, 2, 0, 0],
+            data: [28, 8, 6, 3, 0, 0],
             backgroundColor: [
               "#99ccff",
               "#9966ff",
@@ -53,16 +58,16 @@ class App extends Component {
 
       ticketsFechados: {
         labels: [
-          "Dúvidas: 10",
-          "N2: 2",
-          "N3: 0",
-          "Trial: 0",
+          "Dúvidas: 27",
+          "N2: 8",
+          "N3: 5",
+          "Trial: 3",
           "Freemium: 0",
         ],
         datasets: [
           {
             label: "Abertos",
-            data: [10, 2, 0, 0, 0],
+            data: [27, 8, 5, 3, 0, 0],
             backgroundColor: [
               "#99ccff",
               "#9966ff",
@@ -76,63 +81,79 @@ class App extends Component {
 
       ticketsPorMes: {
         labels: [
-          "Janeiro - 362",
-          "Fevereiro - 206",
-          "Março - 301",
-          "Abril - 330",
-          "Maio - 248",
-          "Junho - 249",
-          "Julho - 287",
-          "Agosto - 310",
-          "Setembro - 238",
-          "Outubro - 289",
-          "Novembro - 222",
+          "Janeiro - 274",
+          "Fevereiro - 45",
+          "Março - 0",
+          "Abril - 0",
+          "Maio - 0",
+          "Junho - 0",
+          "Julho - 0",
+          "Agosto - 0",
+          "Setembro - 0",
+          "Outubro - 0",
+          "Novembro - 0",
           "Dezembro - 0",
         ],
         datasets: [
           {
             label: "Abertos",
-            data: [363, 206, 301, 330, 248, 249, 287, 310, 238, 289, 267, 14],
+            data: [274, 45, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 30],
             backgroundColor: ["#99ccff"],
           },
         ],
       },
 
       chatTickets: {
-        labels: ["Chats atendidos - 16", "Chats resolvidos - 8", "Chats não resolvidos - 8"],
+        labels: [
+          "Chats atendidos - 43",
+          "Chats resolvidos - 35",
+          "Chats não resolvidos - 8",
+        ],
         datasets: [
           {
             label: "Atendimento Técnico",
-            data: [16, 8, 8, 0],
-            backgroundColor: ["#33ccff", "#3399ff", "#6699ff",],
+            data: [43, 35, 8, 0],
+            backgroundColor: ["#33ccff", "#3399ff", "#6699ff"],
           },
         ],
       },
 
       chatTimer: {
-        labels: ["Maior duração - 39", "Tempo médio de duração - 19", "Maior tempo em fila - 25", "Tempo médio em fila - 5"],
+        labels: [
+          "Maior duração - 81",
+          "Tempo médio de duração - 21",
+          "Maior tempo em fila - 27",
+          "Tempo médio em fila - 2",
+        ],
         datasets: [
           {
             label: "Minutos",
-            data: [39, 19, 25, 5, 0],
+            data: [81, 21, 27, 2, 0],
             backgroundColor: ["#ffcc66", "#ccff66", "#ff6600", "#66ff66"],
           },
         ],
       },
 
       chatQuit: {
-        labels: ["Total de desistencias na fila - 0", "Sem deixar mensagem - 0", "Deixou mensagem - 0"],
+        labels: [
+          "Total de desistencias na fila - 1",
+          "Sem deixar mensagem - 1",
+          "Deixou mensagem - 0",
+        ],
         datasets: [
           {
             label: "Desistencias",
-            data: [0, 0, 0, 0],
+            data: [1, 1, 0, 0],
             backgroundColor: ["#ff6600", "#ccff66", "#ffcc66", "#66ff66"],
           },
         ],
       },
 
       chatQuitTimer: {
-        labels: ["Maior tempo até desistencia - 0", "Tempo médio para desistencia - 0]"],
+        labels: [
+          "Maior tempo até desistencia - 0",
+          "Tempo médio para desistencia - 0",
+        ],
         datasets: [
           {
             label: "Minutos",
@@ -145,8 +166,9 @@ class App extends Component {
   }
 
   render() {
+     
     return (
-      <section className="container mt-2">
+      <section className="container mt-4">
         <div
           className="col-6 centered"
           style={{ position: "fixed", display: "none" }}
@@ -172,27 +194,30 @@ class App extends Component {
             </Select>
           </FormControl>
         </div>
-
-        <div className="mt-5 shadow rounded">
-          <Polar
-            data={this.state.csat}
-            options={{
-              title: {
-                display: true,
-                text: "CSAT",
-                fontSize: 25,
-              },
-              legend: {
-                display: true,
-                position: "right",
-              },
-            }}
-          />
-          <h3 className='text-right mr-3'><b>Total: 92%</b></h3>
+        <div className="row">
+          <div className="mt-5 col-10 shadow rounded left p-3">
+            <Polar
+              data={this.state.csat}
+              options={{
+                title: {
+                  display: true,
+                  text: "CSAT",
+                  fontSize: 25,
+                },
+                legend: {
+                  display: true,
+                  position: "right",
+                },
+              }}
+            />
+            <h3 className="text-right">
+              <b>Total: 98%</b>
+            </h3>
+          </div>
         </div>
 
         <div className="row">
-          <div className="mt-5 col-7 shadow rounded left">
+          <div className="mt-5 col-10 shadow rounded left p-3">
             <Pie
               data={this.state.ticketsAbertos}
               options={{
@@ -207,10 +232,14 @@ class App extends Component {
                 },
               }}
             />
-            <h3 className='text-right'><b>Total: 14</b></h3>
+            <h3 className="text-right">
+              <b>Total: 45</b>
+            </h3>
           </div>
-
-          <div className="mt-5 col-7 shadow rounded">
+        </div>
+        
+        <div className="row">
+          <div className="mt-5 col-10 shadow rounded p-3">
             <Pie
               data={this.state.ticketsFechados}
               options={{
@@ -225,93 +254,105 @@ class App extends Component {
                 },
               }}
             />
-            <h3 className='text-right'><b>Total: 12</b></h3>
+            <h3 className="text-right">
+              <b>Total: 43</b>
+            </h3>
           </div>
         </div>
 
-        <div className="mt-5 shadow rounded">
-          <Line
-            data={this.state.ticketsPorMes}
-            options={{
-              title: {
-                display: true,
-                text: "Tickets Por Mês",
-                fontSize: 25,
-              },
-              legend: {
-                display: true,
-                position: "right",
-              },
-            }}
-          />
+        <div className="row">
+          <div className="mt-5 col-12 shadow rounded p-3">
+            <Line
+              data={this.state.ticketsPorMes}
+              options={{
+                title: {
+                  display: true,
+                  text: "Tickets Por Mês",
+                  fontSize: 25,
+                },
+                legend: {
+                  display: true,
+                  position: "right",
+                },
+              }}
+            />
+          </div>
         </div>
 
-        <div className="mt-5 col-11 shadow rounded">
-          <HorizontalBar
-            data={this.state.chatTickets}
-            options={{
-              title: {
-                display: true,
-                text: "Chat",
-                fontSize: 25,
-              },
-              legend: {
-                display: true,
-                position: "right",
-              },
-            }}
-          />
+        <div className="row">
+          <div className="mt-5 col-10 shadow rounded p-3s">
+            <HorizontalBar
+              data={this.state.chatTickets}
+              options={{
+                title: {
+                  display: true,
+                  text: "Chat",
+                  fontSize: 25,
+                },
+                legend: {
+                  display: true,
+                  position: "right",
+                },
+              }}
+            />
+          </div>
         </div>
 
-        <div className="mt-5 col-11 shadow rounded">
-          <HorizontalBar
-            data={this.state.chatTimer}
-            options={{
-              title: {
-                display: true,
-                text: "Tempo em Chat",
-                fontSize: 25,
-              },
-              legend: {
-                display: true,
-                position: "right",
-              },
-            }}
-          />
+        <div className="row">
+          <div className="mt-5 col-10 shadow rounded p-3">
+            <HorizontalBar
+              data={this.state.chatTimer}
+              options={{
+                title: {
+                  display: true,
+                  text: "Tempo em Chat",
+                  fontSize: 25,
+                },
+                legend: {
+                  display: true,
+                  position: "right",
+                },
+              }}
+            />
+          </div>
         </div>
 
-        <div className="mt-5 col-11 shadow rounded">
-          <HorizontalBar
-            data={this.state.chatQuit}
-            options={{
-              title: {
-                display: true,
-                text: "Desistencia do Chat",
-                fontSize: 25,
-              },
-              legend: {
-                display: true,
-                position: "right",
-              },
-            }}
-          />
+        <div className="row">
+          <div className="mt-5 col-10 shadow rounded p-3">
+            <HorizontalBar
+              data={this.state.chatQuit}
+              options={{
+                title: {
+                  display: true,
+                  text: "Desistencia do Chat",
+                  fontSize: 25,
+                },
+                legend: {
+                  display: true,
+                  position: "right",
+                },
+              }}
+            />
+          </div>
         </div>
 
-        <div className="mt-5 col-11 shadow rounded">
-          <HorizontalBar
-            data={this.state.chatQuitTimer}
-            options={{
-              title: {
-                display: true,
-                text: "Tempo de desistencia do Chat",
-                fontSize: 25,
-              },
-              legend: {
-                display: true,
-                position: "right",
-              },
-            }}
-          />
+        <div className="row">
+          <div className="mt-5 col-10 shadow rounded mb-5 p-3">
+            <HorizontalBar
+              data={this.state.chatQuitTimer}
+              options={{
+                title: {
+                  display: true,
+                  text: "Tempo de desistencia do Chat",
+                  fontSize: 25,
+                },
+                legend: {
+                  display: true,
+                  position: "right",
+                },
+              }}
+            />
+          </div>
         </div>
       </section>
     );
